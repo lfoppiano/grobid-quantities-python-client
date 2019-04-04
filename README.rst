@@ -49,6 +49,14 @@ To process PDF
     client.process_pdf(pdfFile)
 
 
+To parse the measurements
+
+.. code-block:: python
+
+    client.parse_measures("from": "10", "to": "20", "unit": "km")
+
+
+
 The response is a tuple where the first element is the status code and and the second element the response body as a dictionary.
 Here an example: 
 

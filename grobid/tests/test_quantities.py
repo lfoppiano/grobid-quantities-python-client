@@ -36,9 +36,11 @@ class QuantitiesTest(unittest.TestCase):
     #     print(result[1])
 
     # def test_parse_measures(self):
-    #     result = self.target.parse_measures(str({"From": 10, "to": 20}))
-    #     assert result is not None or ""
+    #     query = {"from": "10", "to": "20", "unit": "km"}
+    #
+    #     result = self.target.parse_measures(str(query))
     #     assert result[0] is 200
+    #     assert result is not None or ""
     #
     #     print(result[1])
 

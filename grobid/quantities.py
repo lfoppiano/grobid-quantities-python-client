@@ -74,12 +74,12 @@ class QuantitiesClient(ApiClient):
             return status, None
 
     def parse_measures(self, text):
-
-        files = {'text': text}
-        res, status_code = self.post(self.parse_measures_url, files=files)
+        res, status_code = self.post(self.parse_measures_url, data=text)
 
         if status_code == 200:
             return status_code, self.decode(res)
         else:
             logger.debug("Request failed")
+            # if 'description' in res:
+            #     logger.debug("Error: " + res['description']);
             return status_code, None
