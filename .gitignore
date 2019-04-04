@@ -1,0 +1,11 @@
+*.pyc
+.idea/*
+*.iml
+.idea/
+dist/*
+.python-version
+dist
+*.egg-info
+build
+.eggs
+
