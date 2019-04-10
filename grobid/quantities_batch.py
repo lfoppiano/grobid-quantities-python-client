@@ -1,4 +1,5 @@
 import io
+import json
 import ntpath
 import os
 import sys
@@ -32,7 +33,7 @@ class QuantitiesBatch:
 
     def process_file(self, file, output):
         logger.info("Processing " + file)
-        result, response_code = self.client.process_pdf(file)
+        response_code, result = self.client.process_pdf(file)
 
         if response_code == 503:
             logger.warning("Got 503, sleeping and retrying")
@@ -51,8 +52,12 @@ class QuantitiesBatch:
 
             pdf_file_name = ntpath.basename(file)
             filename = join(output, splitext(pdf_file_name)[0] + '.json')
-            with io.open(filename, 'w', encoding='utf8') as jsonWriter:
-                jsonWriter.write(result)
+            try:
+                with open(filename, 'w', encoding='utf8') as f:
+                    json.dump(result, f)
+            except BaseException as e:
+                logger.error("Error when writing ", e)
+
 
         else:
             logger.error("Got error " + response_code + "from file :" + file + ". Skipping output. ")
@@ -68,7 +73,7 @@ class QuantitiesBatch:
         logger.info("Processing data from {} using {} threads".format(input_path, num_processes))
 
         onlyfiles = [os.path.join(dp, f) for dp, dn, fn in os.walk(input_path) for f in fn if
-                     f.lower().endswith("pdf") and isfile(join(input_path, f))]
+                     f.lower().endswith("pdf") and isfile(join(dp, f))]
 
         pdf_files = []
 
