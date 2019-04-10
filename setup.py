@@ -36,7 +36,6 @@ setup(
     keywords=['measurements', 'text mining', 'tdm', 'grobid'],
     install_requires=['requests', 'zenlog'],
     packages=['grobid'],
-    # package_dir={'nerd': 'entity-fishing_client'},
     zip_safe=False,
     test_suite='setup.my_test_suite'
 )

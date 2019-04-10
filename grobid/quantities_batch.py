@@ -1,5 +1,6 @@
 import io
 import ntpath
+import os
 import sys
 import time
 from concurrent.futures.process import ProcessPoolExecutor
@@ -66,7 +67,7 @@ class QuantitiesBatch:
     def process(self, input_path, output_path, num_processes):
         logger.info("Processing data from {} using {} threads".format(input_path, num_processes))
 
-        onlyfiles = [join(input_path, f) for f in listdir(input_path) if
+        onlyfiles = [os.path.join(dp, f) for dp, dn, fn in os.walk(input_path) for f in fn if
                      f.lower().endswith("pdf") and isfile(join(input_path, f))]
 
         pdf_files = []
