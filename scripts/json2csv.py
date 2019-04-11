@@ -57,8 +57,6 @@ def quantity2List(quantity):
 
 
 def interval2csv(measurement):
-    print("Processing interval")
-
     outputList = []
 
     id = uuid.uuid4()
@@ -97,8 +95,6 @@ def interval2csv(measurement):
 
 
 def value2csv(measurement):
-    print("Processing value")
-
     outputList = []
 
     id = uuid.uuid4()
@@ -121,8 +117,6 @@ def value2csv(measurement):
 
 
 def list2csv(measurement):
-    print("Processing list")
-
     outputList = []
 
     id = uuid.uuid4()
@@ -180,5 +174,7 @@ outputFile = sys.argv[2]
 
 only_files = [os.path.join(dp, f) for dp, dn, fn in os.walk(inputPath) for f in fn if
               f.lower().endswith("json") and isfile(join(dp, f))]
+
+print("Processing " + len(only_files) + " files.")
 
 process(only_files, outputFile)
