@@ -175,6 +175,6 @@ outputFile = sys.argv[2]
 only_files = [os.path.join(dp, f) for dp, dn, fn in os.walk(inputPath) for f in fn if
               f.lower().endswith("json") and isfile(join(dp, f))]
 
-print("Processing " + len(only_files) + " files.")
+print("Processing " + str(len(only_files)) + " files.")
 
 process(only_files, outputFile)
