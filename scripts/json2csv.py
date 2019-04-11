@@ -158,7 +158,7 @@ def process(files, output_file):
                 loaded = json.load(f)
 
                 if 'measurements' not in loaded:
-                    break
+                    continue
 
             for measurement in loaded['measurements']:
                 row_list = processMap.get(measurement.get('type'))(measurement)
