@@ -153,7 +153,7 @@ def process(files, output_file):
         writer = csv.writer(output, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
 
         for file in files:
-            print("Processing " + str(file))
+            # print("Processing " + str(file))
             with open(file, 'r') as f:
                 loaded = json.load(f)
 
