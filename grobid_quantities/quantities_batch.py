@@ -10,7 +10,7 @@ from os.path import isfile, join, splitext
 
 from zenlog import logging
 
-from grobid.quantities import QuantitiesClient
+from grobid_quantities.quantities import QuantitiesClient
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)

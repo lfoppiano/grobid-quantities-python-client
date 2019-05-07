@@ -30,7 +30,7 @@ Process Text / PDF
 
 .. code-block:: python
 
-    from grobid.quantities import QuantitiesClient
+    from grobid_quantities.quantities import QuantitiesClient
     client = QuantitiesClient(apiBase=server_url)
 
 

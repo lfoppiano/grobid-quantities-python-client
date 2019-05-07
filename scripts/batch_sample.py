@@ -1,7 +1,7 @@
 import sys
 import time
 
-from grobid.quantities_batch import QuantitiesBatch
+from grobid_quantities.quantities_batch import QuantitiesBatch
 
 if len(sys.argv) != 4:
     sys.exit("Missing parameter. Usage: python batch_sample.py /input/directory /output/directory nbThreads")

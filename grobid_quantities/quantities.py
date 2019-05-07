@@ -7,7 +7,7 @@ except ImportError:
 
 from zenlog import logging
 
-from grobid.client import ApiClient
+from grobid_quantities.client import ApiClient
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)

@@ -35,7 +35,7 @@ setup(
     ],
     keywords=['measurements', 'text mining', 'tdm', 'grobid'],
     install_requires=['requests', 'zenlog'],
-    packages=['grobid'],
+    packages=['grobid_quantities'],
     zip_safe=False,
     test_suite='setup.my_test_suite'
 )

@@ -1,6 +1,6 @@
 import unittest
 
-from grobid.quantities import QuantitiesClient
+from grobid_quantities.quantities import QuantitiesClient
 
 
 class QuantitiesTest(unittest.TestCase):
