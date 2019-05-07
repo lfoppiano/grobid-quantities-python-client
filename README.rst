@@ -20,7 +20,7 @@ Installation
 
 The client can be installed using `pip`:
 
-   pip install grobid-quantities-python
+   pip install grobid-quantities-client
 
 Usage
 -----
