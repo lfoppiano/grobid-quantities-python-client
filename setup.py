@@ -20,7 +20,7 @@ def my_test_suite():
 
 setup(
     name='grobid-quantities-client',
-    version='0.1.0',
+    version='0.2.0',
     description='A minimal client for grobid-quantities service.',
     long_description=long_description,
     url='https://github.com/lfoppiano/grobid-quantitites-python-client',
