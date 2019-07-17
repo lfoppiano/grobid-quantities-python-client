@@ -38,7 +38,7 @@ class QuantitiesClient(ApiClient):
     def process_pdf(self, file):
 
         files = {
-            'file': (
+            'input': (
                 file,
                 open(file, 'rb'),
                 'application/pdf',
@@ -55,7 +55,7 @@ class QuantitiesClient(ApiClient):
         if status == 200:
             return status, self.decode(res)
         else:
-            logger.debug('Quantitiers PDF extraction failed with error ' + str(status))
+            logger.debug('Quantities PDF extraction failed with error ' + str(status))
             return status, None
 
     def process_text(self, text):
