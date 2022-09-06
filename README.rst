@@ -22,45 +22,56 @@ The client can be installed using `pip`:
 
    pip install grobid-quantities-client
 
-Usage
------
+Command Line Interface (CLI)
+----------------------------
 
-Process Text / PDF
-##################
+The CLI follows the following parameters:
 
-.. code-block:: python
+    python -m grobid_quantities.quantities --help
+    usage: quantities.py [-h] --input INPUT [--output OUTPUT] [--base-url BASE_URL] [--config CONFIG] [--n N] [--force] [--verbose]
 
-    from grobid_quantities.quantities import QuantitiesClient
-    client = QuantitiesClient(apiBase=server_url)
+    Client for the Grobid-quantities service
+
+    optional arguments:
+      -h, --help           show this help message and exit
+      --input INPUT        path to the directory containing PDF files or .txt (for processCitationList only, one reference per line) to process
+      --output OUTPUT      path to the directory where to put the results (optional)
+      --base-url BASE_URL  Base url of the service
+      --config CONFIG      path to the config file, default is ./config.json
+      --n N                concurrency for service usage
+      --force              force re-processing pdf input files when tei output files already exist
+      --verbose            print information about processed files in the console
 
 
-To process raw text:
 
-.. code-block:: python
+API Usage
+---------
+Initialisation
+
+    from grobid_quantities.quantities import Quantities
+    client = QuantitiesAPI(base_url=server_url:port)
+
+Process raw text:
+^^^^^^^^^^^^^^
 
     client.process_text(
         "I lost two minutes"
     )
 
-To process PDF
-
-.. code-block:: python
+Process PDF document
+^^^^^^^^^^^^^^
 
     client.process_pdf(pdfFile)
 
 
-To parse the measurements
-
-.. code-block:: python
+Parse the measurements
+^^^^^^^^^^^^^^^^^^^^^^
 
     client.parse_measures("from": "10", "to": "20", "unit": "km")
 
 
-
 The response is a tuple where the first element is the status code and and the second element the response body as a dictionary.
-Here an example: 
-
-.. code-block:: python
+Here an example:
 
     (
         200,
@@ -100,17 +111,3 @@ Here an example:
           ]
         }
    )
-
-Batch processing
-######################
-The batch processing is implemented in the class ``QuantitiesBatch``.
-The class can be instantiated by defining the entity-fishing url in the constructor, else the default one is used.
-
-To run the processing, the method `process` requires the `input` directory, a callback and the number of threads/processes.
-There is an already ready implementation in `script/batchSample.py`.
-
-To run it:
- - under this work branch, prepare two folders: `input` which containing the input PDF files to be processed and `output` which collecting the processing result
- - we recommend to create a new virtualenv, activate it and install all the requirements needed in this virtual environment using `$ pip install -r /path/of/grobid-quantities-python-client/source/requirements.txt`
- - (temporarly, until this branch is not merged) install entity-fishing **multithread branch** in edit mode (`pip install -e /path/of/client-python/source`)
- - run it with `python runFile.py input output 5`
