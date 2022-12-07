@@ -55,7 +55,7 @@ class QuantitiesAPI(ApiClient):
         self.timeout = timeout
         self.sleep_time = sleep_time
 
-        if config_path != None:
+        if config_path is not None:
             self.config_path = self._load_config(config_path)
 
         self.process_pdf_url = urljoin(self.base_url, "annotateQuantityPDF")
@@ -124,16 +124,16 @@ class QuantitiesAPI(ApiClient):
 
         if status != 200:
             logger.info("Grobid-quantities server is running but connection failed with error code " + str(status))
+            raise ServerUnavailableException
         else:
             logger.info("Grobid-quantities server is up and running")
-
 
     def _load_config(self, path="./config.json"):
         """
         Load the json configuration
         """
         config_json = open(path).read()
-        self.config = json.loads(config_json)
+        return json.loads(config_json)
 
 class QuantitiesClient:
 
@@ -226,11 +226,11 @@ def main():
         default="http://localhost:8060/service",
         help="Base url of the service",
     )
-    parser.add_argument(
-        "--config",
-        default="./config.json",
-        help="path to the config file, default is ./config.json",
-    )
+    # parser.add_argument(
+    #     "--config",
+    #     default="./config.json",
+    #     help="path to the config file, default is ./config.json",
+    # )
     parser.add_argument("--n", default=10, help="concurrency for service usage")
     parser.add_argument(
         "--force",
@@ -238,17 +238,17 @@ def main():
         default=False,
         help="force re-processing pdf input files when tei output files already exist",
     )
-    parser.add_argument(
-        "--verbose",
-        default=False,
-        action="store_true",
-        help="print information about processed files in the console",
-    )
+    # parser.add_argument(
+    #     "--verbose",
+    #     default=False,
+    #     action="store_true",
+    #     help="print information about processed files in the console",
+    # )
 
     args = parser.parse_args()
 
     input_path = args.input
-    config_path = args.config
+    # config_path = args.config
     output_path = args.output
     base_url = args.base_url
 
@@ -270,7 +270,7 @@ def main():
             print("Successfully created the directory", output_path)
 
     force = args.force
-    verbose = args.verbose
+    # verbose = args.verbose
 
     try:
         client = QuantitiesClient(base_url=base_url)
