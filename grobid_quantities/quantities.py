@@ -49,6 +49,8 @@ class QuantitiesAPI(ApiClient):
         if not self.base_url.endswith('/'):
             self.base_url = self.base_url + '/'
 
+        self.base_url += '/service'
+
         if check_server:
             self._test_server_connection(self.base_url)
 
@@ -113,7 +115,7 @@ class QuantitiesAPI(ApiClient):
 
     def _test_server_connection(self, base_url):
         """Test if the server is up and running."""
-        the_url = base_url + "isalive"
+        the_url = base_url + "/isalive"
         try:
             r = requests.get(the_url)
         except:
