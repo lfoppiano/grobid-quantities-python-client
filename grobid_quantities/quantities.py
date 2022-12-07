@@ -113,7 +113,7 @@ class QuantitiesAPI(ApiClient):
 
     def _test_server_connection(self, base_url):
         """Test if the server is up and running."""
-        the_url = base_url + "/api/isalive"
+        the_url = base_url + "isalive"
         try:
             r = requests.get(the_url)
         except:
