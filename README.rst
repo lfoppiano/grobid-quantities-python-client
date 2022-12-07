@@ -53,7 +53,7 @@ Initialisation
 ::
 
     from grobid_quantities.quantities import Quantities
-    client = QuantitiesAPI(base_url=server_url:port)
+    client = QuantitiesAPI(base_url=http(s)://server_url:port/base/url)
 
 Process raw text:
 ^^^^^^^^^^^^^^
