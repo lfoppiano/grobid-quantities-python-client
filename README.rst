@@ -36,7 +36,7 @@ The CLI follows the following parameters:
       -h, --help           show this help message and exit
       --input INPUT        path to the directory containing PDF files or .txt (for processCitationList only, one reference per line) to process
       --output OUTPUT      path to the directory where to put the results (optional)
-      --base-url BASE_URL  Base url of the service
+      --base-url BASE_URL  Base url of the service (without the suffix `/service/`)
       --config CONFIG      path to the config file, default is ./config.json
       --n N                concurrency for service usage
       --force              force re-processing pdf input files when tei output files already exist

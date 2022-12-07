@@ -49,7 +49,7 @@ class QuantitiesAPI(ApiClient):
         if not self.base_url.endswith('/'):
             self.base_url = self.base_url + '/'
 
-        self.base_url += '/service'
+        self.base_url += 'service/'
 
         if check_server:
             self._test_server_connection(self.base_url)
@@ -57,8 +57,8 @@ class QuantitiesAPI(ApiClient):
         self.timeout = timeout
         self.sleep_time = sleep_time
 
-        if config_path is not None:
-            self.config_path = self._load_config(config_path)
+        # if config_path is not None:
+        #     self.config_path = self._load_config(config_path)
 
         self.process_pdf_url = urljoin(self.base_url, "annotateQuantityPDF")
         self.process_text_url = urljoin(self.base_url, "processQuantityText")
@@ -115,7 +115,7 @@ class QuantitiesAPI(ApiClient):
 
     def _test_server_connection(self, base_url):
         """Test if the server is up and running."""
-        the_url = base_url + "/isalive"
+        the_url = urljoin(base_url, "isalive")
         try:
             r = requests.get(the_url)
         except:
