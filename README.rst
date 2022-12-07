@@ -20,12 +20,16 @@ Installation
 
 The client can be installed using `pip`:
 
+::
+
    pip install grobid-quantities-client
 
 Command Line Interface (CLI)
 ----------------------------
 
 The CLI follows the following parameters:
+
+::
 
     python -m grobid_quantities.quantities --help
     usage: quantities.py [-h] --input INPUT [--output OUTPUT] [--base-url BASE_URL] [--config CONFIG] [--n N] [--force] [--verbose]
@@ -46,11 +50,15 @@ API Usage
 ---------
 Initialisation
 
+::
+
     from grobid_quantities.quantities import Quantities
     client = QuantitiesAPI(base_url=server_url:port)
 
 Process raw text:
 ^^^^^^^^^^^^^^
+
+::
 
     client.process_text(
         "I lost two minutes"
@@ -65,11 +73,15 @@ Process PDF document
 Parse the measurements
 ^^^^^^^^^^^^^^^^^^^^^^
 
+::
+
     client.parse_measures("from": "10", "to": "20", "unit": "km")
 
 
 The response is a tuple where the first element is the status code and and the second element the response body as a dictionary.
 Here an example:
+
+::
 
     (
         200,
