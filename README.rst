@@ -18,18 +18,14 @@ For more information about Grobid Quantities, please check the `Grobid Quantitie
 Installation
 ------------
 
-The client can be installed using `pip`:
+The client can be installed using `pip`::
 
-::
-
-   pip install grobid-quantities-client
+  pip install grobid-quantities-client
 
 Command Line Interface (CLI)
 ----------------------------
 
-The CLI follows the following parameters:
-
-::
+The CLI follows the following parameters::
 
     python -m grobid_quantities.quantities --help
     usage: quantities.py [-h] --input INPUT [--output OUTPUT] [--base-url BASE_URL] [--config CONFIG] [--n N] [--force] [--verbose]
@@ -48,40 +44,30 @@ The CLI follows the following parameters:
 
 API Usage
 ---------
-Initialisation
-
-::
+Initialisation::
 
     from grobid_quantities.quantities import Quantities
     client = QuantitiesAPI(base_url=http(s)://server_url:port/base/url)
 
-Process raw text:
-^^^^^^^^^^^^^^
 
-::
+Process raw text::
 
     client.process_text(
         "I lost two minutes"
     )
 
-Process PDF document
-^^^^^^^^^^^^^^
+Process PDF document::
 
     client.process_pdf(pdfFile)
 
 
-Parse the measurements
-^^^^^^^^^^^^^^^^^^^^^^
-
-::
+Parse the measurements::
 
     client.parse_measures("from": "10", "to": "20", "unit": "km")
 
 
 The response is a tuple where the first element is the status code and and the second element the response body as a dictionary.
-Here an example:
-
-::
+Here an example::
 
     (
         200,
